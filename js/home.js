@@ -4,7 +4,7 @@
  *
  * Licensed under the MIT license.
  * http://www.opensource.org/licenses/mit-license.php
- * 
+ *
  * Copyright 2017, Codrops
  * http://www.codrops.com
  */
@@ -65,7 +65,7 @@
 			this.DOM.nextCtrl = this.DOM.nav.querySelector('.slidenav__item--next');
 			this.DOM.prevCtrl = this.DOM.nav.querySelector('.slidenav__item--prev');
 			this.current = 0;
-			this.createFrame(); 
+			this.createFrame();
 			this.initEvents();
 		}
 		createFrame() {
@@ -75,41 +75,42 @@
 				initial: this.calculatePath('initial'),
 				final: this.calculatePath('final')
 			};
-			this.DOM.svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-			this.DOM.svg.setAttribute('class', 'shape');
-			this.DOM.svg.setAttribute('width','100%');
-			this.DOM.svg.setAttribute('height','100%');
-			this.DOM.svg.setAttribute('viewbox',`0 0 ${this.rect.width} ${this.rect.height}`);
-			this.DOM.svg.innerHTML = `
-<defs>
-<linearGradient id="gradient1" x1="0%" y1="0%" x2="0%" y2="100%">
-<stop offset="0%" stop-color="#fff"/>
-<stop offset="100%" stop-color="#fff"/>
-</linearGradient>
-</defs>
-<path fill="${this.settings.frameFill}" d="${this.paths.initial}"/>`;
-			this.DOM.el.insertBefore(this.DOM.svg, this.DOM.titles);
-			this.DOM.shape = this.DOM.svg.querySelector('path');
+// 			this.DOM.svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+// 			this.DOM.svg.setAttribute('class', 'shape');
+// 			this.DOM.svg.setAttribute('width','100%');
+// 			this.DOM.svg.setAttribute('height','100%');
+// 			this.DOM.svg.setAttribute('viewbox',`0 0 ${this.rect.width} ${this.rect.height}`);
+// 			this.DOM.svg.innerHTML = `
+// <defs>
+// <linearGradient id="gradient1" x1="0%" y1="0%" x2="0%" y2="100%">
+// <stop offset="0%" stop-color="#fff"/>
+// <stop offset="100%" stop-color="#fff"/>
+// </linearGradient>
+// </defs>
+// <path fill="${this.settings.frameFill}" d="${this.paths.initial}"/>`;
+// 			this.DOM.el.insertBefore(this.DOM.svg, this.DOM.titles);
+// 			this.DOM.shape = this.DOM.svg.querySelector('path');
 		}
 		updateFrame() {
 			this.paths.initial = this.calculatePath('initial');
 			this.paths.final = this.calculatePath('final');
-			this.DOM.svg.setAttribute('viewbox',`0 0 ${this.rect.width} ${this.rect.height}`);
-			this.DOM.shape.setAttribute('d', this.isAnimating ? this.paths.final : this.paths.initial);
+			// this.DOM.svg.setAttribute('viewbox',`0 0 ${this.rect.width} ${this.rect.height}`);
+			// this.DOM.shape.setAttribute('d', this.isAnimating ? this.paths.final : this.paths.initial);
 		}
 		calculatePath(path = 'initial') {
 
-			if ( path === 'initial' ) {
-				return `M 0,0 0,${this.rect.height} ${this.rect.width},${this.rect.height} ${this.rect.width},0 0,0 Z M 0,0 ${this.rect.width},0 ${this.rect.width},${this.rect.height} 0,${this.rect.height} Z`;
-			}
-			else {
-				const point1 = {x: this.rect.width/4-50, y: this.rect.height/4+50};
-				const point2 = {x: this.rect.width/4+50, y: this.rect.height/4-50};
-				const point3 = {x: this.rect.width-point2.x, y: this.rect.height-point2.y};
-				const point4 = {x: this.rect.width-point1.x, y: this.rect.height-point1.y};
-
-				return `M 0,0 0,${this.rect.height} ${this.rect.width},${this.rect.height} ${this.rect.width},0 0,0 Z M ${point1.x},${point1.y} ${point2.x},${point2.y} ${point4.x},${point4.y} ${point3.x},${point3.y} Z`;
-			}
+			// if ( path === 'initial' ) {
+			// 	return `M 0,0 0,${this.rect.height} ${this.rect.width},${this.rect.height} ${this.rect.width},0 0,0 Z M 0,0 ${this.rect.width},0 ${this.rect.width},${this.rect.height} 0,${this.rect.height} Z`;
+			// }
+			// else {
+			// 	const point1 = {x: this.rect.width/4-50, y: this.rect.height/4+50};
+			// 	const point2 = {x: this.rect.width/4+50, y: this.rect.height/4-50};
+			// 	const point3 = {x: this.rect.width-point2.x, y: this.rect.height-point2.y};
+			// 	const point4 = {x: this.rect.width-point1.x, y: this.rect.height-point1.y};
+      //
+			// 	return `M 0,0 0,${this.rect.height} ${this.rect.width},${this.rect.height} ${this.rect.width},0 0,0 Z M ${point1.x},${point1.y} ${point2.x},${point2.y} ${point4.x},${point4.y} ${point3.x},${point3.y} Z`;
+			return 0;
+			// }
 		}
 		initEvents() {
 			this.DOM.nextCtrl.addEventListener('click', () => this.navigate('next'));
@@ -140,7 +141,37 @@
 				easing: this.settings.animation.shape.easing.in,
 				d: this.paths.final
 			});
+			$('.box').load('img/d_logo.svg', function() {
+				$(this).css({
+					'display':'block',
+					// 'width':'300vw'
+				});
+				$(this).addClass('scaled');
+				setTimeout(function() {
+					$('.box').removeClass('scaled');
+				},400);
+			});
 
+			// $('.box').load('img/d_logo.svg', function() {
+			// 	$(this).css({
+			// 		'display':'block',
+			// 		'width':'300vw'
+			// 	}).animate({
+			// 		// 'width':'100vw'
+			// 		// 'transform':'scale(0.333, 0.333)'
+			// 		$(this).addClass('scaled');
+			// 	}, 400, 'easeInCirc', function() {
+			// 		$(this).animate({
+			// 			// 'width':'300vw'
+			// 		// 'transform':'scale(3, 3)'
+			// 		$(this).removeClass('scaled');
+			// 		}, 400, 'easeInCirc', function() {
+			// 			$(this).css({
+			// 				'display':'none'
+			// 			})
+			// 		})
+			// 	})
+			// });
 			const animateSlides = () => {
 				return new Promise((resolve, reject) => {
 					const currentSlide = this.DOM.slides[this.current];
@@ -169,9 +200,9 @@
 						}
 					});
 
-					this.current = dir === 'next' ? 
+					this.current = dir === 'next' ?
 						this.current < this.slidesTotal-1 ? this.current + 1 : 0 :
-					this.current > 0 ? this.current - 1 : this.slidesTotal-1; 
+					this.current > 0 ? this.current - 1 : this.slidesTotal-1;
 
 					const newSlide = this.DOM.slides[this.current];
 					newSlide.classList.add('slide--current');
@@ -223,4 +254,3 @@
 	new Slideshow(document.querySelector('.slideshow'));
 	imagesLoaded('.slide__img', { background: true }, () => document.body.classList.remove('loading'));
 };
-

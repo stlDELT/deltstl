@@ -65,6 +65,20 @@
 	z-index: 5;
 	transition-delay: .9s !important
 }
+.box {
+	/* color: transparent;
+	background-color:transparent; */
+	width:300vw;
+	transition:0.4s;
+	/* height:100vh; */
+	z-index:100;
+	position:fixed;
+	left:0;
+	top:0;
+}
+.scaled {
+	transform: scale(0.333, 0.333);
+}
 .doit img, .doit2 img {
 	position: relative;
 	z-index: 1;
@@ -238,7 +252,7 @@
     width: 700px;
     top: 60px;
     left: 60px;
-    
+
 }
 .hppi h3 {
     color: #fff;
@@ -555,7 +569,7 @@
 		display: block;
 		padding: 0.85em;
 	}
-	
+
 	.slide__desc {
 		font-size: 1em;
 	}
@@ -600,7 +614,7 @@
 	opacity: 0;
 	transition: all .3s;
 	padding: 0px !important;
-	
+
 }
 
 .theslide.active{
@@ -1344,7 +1358,7 @@ body {
 	margin: auto;
 }
 .gbr {
-	border-right: 1px solid #e5e5e5 
+	border-right: 1px solid #e5e5e5
 }
 .worksq {
 	position: relative;
@@ -1779,7 +1793,7 @@ button:hover {
 	transition: .3s ease
 }
 .topbanner.membersmall {
-	
+
 }
 .bigtitle {
 	position: absolute;
@@ -1956,7 +1970,7 @@ button:hover {
 	opacity: 1;
 	max-height: 100%;
 	transition: .6s ease
-} 
+}
 .accordion a.active h3 {
 	color: #01ff2b;
 }
@@ -2148,7 +2162,7 @@ button:hover {
 }
 
 
- 
+
 .transition-overlay{ width:100%; height:100%; position:fixed; left:0; top:0; padding:15px; z-index:999; opacity:0; visibility:hidden;}
 .transition-overlay{transition: all 0.5s 0.135s cubic-bezier(0.645, 0.045, 0.355, 1);}
 .transition-overlay .inside{ width:100%; height:100%; float:left; background:#0c0c0c;}
@@ -2162,7 +2176,7 @@ button:hover {
 .preloader .inside .text{ display:table-cell; vertical-align:middle; text-align:center;}
 .preloader .inside .text{transition: all 0.5s 0.135s cubic-bezier(0.645, 0.045, 0.355, 1);}
 .preloader .inside .text small{ font-weight:700; color:#fff; letter-spacing:5px; transform:translateY(70px); display:inline-block;}
-.page-loaded .preloader{ padding:15px; visibility:hidden;}	
+.page-loaded .preloader{ padding:15px; visibility:hidden;}
 .page-loaded .preloader .inside{ height:0; transition-delay:0.4s;}
 .page-loaded .preloader .inside .text{ transform:translateY(70px); opacity:0; height:0; overflow:hidden; float:left;}
 .page-loaded .navigation .hamburger{transform: translateX(0); -moz-transform: translateX(0); -ms-transform: translateX(0); -o-transform: translateX(0); -webkit-transform: translateX(0);}
@@ -2300,7 +2314,7 @@ button:hover {
 	transition: .6s ease
 }
 .in-view.line {
-	
+
 }
 .in-view.line:after {
 	height: 100%;
