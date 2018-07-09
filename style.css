@@ -68,16 +68,26 @@
 .box {
 	/* color: transparent;
 	background-color:transparent; */
-	width:300vw;
-	transition:0.4s;
-	/* height:100vh; */
+	/* color:white; */
+/*
+	padding-left:30vw;
+	padding-right:30vw;
+	width:500vw;
+	*/
 	z-index:100;
-	position:fixed;
-	left:0;
-	top:0;
+	/* left:-250vw;
+	top:0; */
+
+	position:absolute;
+	/* transform: scale(5, 5); */
+	/* left:-60vw; */
+	/* transition:0.4s; */
+}
+.box svg {
+	/* top:-250vh; */
 }
 .scaled {
-	transform: scale(0.333, 0.333);
+	/* transform: scale(0.2, 0.2); */
 }
 .doit img, .doit2 img {
 	position: relative;
