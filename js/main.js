@@ -23,7 +23,7 @@ function fadeTransition(href = window.location.href) {
     'z-index': '1000'
   }).animate({
     'height': '100vh',
-  }, 400, 'easeOutQuint', function() {
+  }, 400, 'easeInQuint', function() {
     $('.ajaxContent').load(href + ' .ajaxContent', function() {
       //            EXECUTES ON CALLBACK
       $('.ajaxContent').children('.ajaxContent').unwrap();
@@ -31,7 +31,7 @@ function fadeTransition(href = window.location.href) {
       initSmoothScroll();
       $('.fader').animate({
         'top': '100vh'
-      }, 400, 'easeOutQuint', function() {
+      }, 400, 'easeInQuint', function() {
         // $('.slider-transition').children('.slider-transition').unwrap();
       });
       //            pushState(href);
