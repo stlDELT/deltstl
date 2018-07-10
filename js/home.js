@@ -69,8 +69,8 @@
 			this.initEvents();
 		}
 		createFrame() {
-			// this.rect = this.DOM.el.getBoundingClientRect();
-			this.rect = this.DOM.el.querySelector('.box');
+			this.rect = this.DOM.el.getBoundingClientRect();
+			// this.rect = this.DOM.el.querySelector('.box');
 			// this.rect = $('.box').load('img/d_logo.svg');
 			this.frameSize = this.rect.width/12;
 			this.paths = {
