@@ -1,8 +1,39 @@
 .fader {
+	overflow:hidden;
+	pointer-events: none;
+	position:fixed;
+	background-color:white;
 	/* background-image: url('img/d_logo.svg');
 	background-size:cover;
 	background-position:top;
 	z-index:1000; */
+}
+.innerSVG {
+	background-image: url('img/d_logo_edit.svg');
+	background-position:center;
+	background-repeat: none !important;
+	background-size:contain;
+	height:100vh;
+	position:absolute;
+left: 50%;
+-webkit-transform: translateX(-50%);
+transform: translateX(-50%);
+	width:50vw;
+	z-index:1001;
+}
+.fader img{
+	z-index:1001;
+	left:-50%;
+	transform: translateX(50%);
+	/* position:absolute; */
+	/* left:50%;
+	transform: translateX(-50%); */
+
+	/* top:0; */
+	/* bottom:0; */
+	pointer-events: none;
+	/* height:100vh;
+	width:100vw */
 }
 
 .ppi {

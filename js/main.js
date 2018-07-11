@@ -18,12 +18,22 @@ function fadeTransition(href = window.location.href) {
     'width': '100vw',
     'left': '0',
     'top': '0',
-    'color': 'black',
-    'background-color': 'black',
+    // 'color': 'black',
+    // 'background-color': 'black',
     'z-index': '1000'
   }).animate({
     'height': '100vh',
   }, 400, 'easeInQuint', function() {
+//     $('.fader').css({
+//       'transform':'rotate(180deg)'
+//     })
+//     $('.innerSVG').css({
+//
+// 'left': '50%',
+// '-webkit-transform': 'translateX(-50%)',
+// 'transform': 'translateX(-50%)',
+//       'transform':'rotate(-180deg)'
+//     })
     $('.ajaxContent').load(href + ' .ajaxContent', function() {
       //            EXECUTES ON CALLBACK
       $('.ajaxContent').children('.ajaxContent').unwrap();
