@@ -48,7 +48,7 @@ function fadeTransition(href = window.location.href) {
     $('.ajaxContent').children('.ajaxContent').unwrap();
     initSmoothScroll();
     $('.fader').animate({
-      'height': '0',
+      // 'height': '0',
       'top': '100vh'
     }, 400, 'easeInQuint', function() {});
     // while ($('.fader').is(':animated')) {
@@ -57,6 +57,9 @@ function fadeTransition(href = window.location.href) {
     //   }
     //   else continue;
     // }
+  $('.innerSVG').animate({
+    'bottom':'100vh'
+  }, 400, 'easeInQuint');
   });
   $('.fader').on('resize', function() {
     console.log('resized');
