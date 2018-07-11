@@ -4,7 +4,7 @@
  *
  * Licensed under the MIT license.
  * http://www.opensource.org/licenses/mit-license.php
- * 
+ *
  * Copyright 2017, Codrops
  * http://www.codrops.com
  */
@@ -65,11 +65,13 @@
 			this.DOM.nextCtrl = this.DOM.nav.querySelector('.slidenav__item--next');
 			this.DOM.prevCtrl = this.DOM.nav.querySelector('.slidenav__item--prev');
 			this.current = 0;
-			this.createFrame(); 
+			this.createFrame();
 			this.initEvents();
 		}
 		createFrame() {
 			this.rect = this.DOM.el.getBoundingClientRect();
+			// this.rect = this.DOM.el.querySelector('.box');
+			// this.rect = $('.box').load('img/d_logo.svg');
 			this.frameSize = this.rect.width/12;
 			this.paths = {
 				initial: this.calculatePath('initial'),
@@ -109,6 +111,7 @@
 				const point4 = {x: this.rect.width-point1.x, y: this.rect.height-point1.y};
 
 				return `M 0,0 0,${this.rect.height} ${this.rect.width},${this.rect.height} ${this.rect.width},0 0,0 Z M ${point1.x},${point1.y} ${point2.x},${point2.y} ${point4.x},${point4.y} ${point3.x},${point3.y} Z`;
+			return 0;
 			}
 		}
 		initEvents() {
@@ -169,9 +172,9 @@
 						}
 					});
 
-					this.current = dir === 'next' ? 
+					this.current = dir === 'next' ?
 						this.current < this.slidesTotal-1 ? this.current + 1 : 0 :
-					this.current > 0 ? this.current - 1 : this.slidesTotal-1; 
+					this.current > 0 ? this.current - 1 : this.slidesTotal-1;
 
 					const newSlide = this.DOM.slides[this.current];
 					newSlide.classList.add('slide--current');
@@ -223,4 +226,3 @@
 	new Slideshow(document.querySelector('.slideshow'));
 	imagesLoaded('.slide__img', { background: true }, () => document.body.classList.remove('loading'));
 };
-
