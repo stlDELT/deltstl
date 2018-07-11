@@ -1,16 +1,69 @@
 jQuery(document).ready(function($) {
   initSmoothScroll();
+  // initSlideShow();
 });
 $("body").on("click", "a.transition", function(event) {
   event.preventDefault();
   event.stopPropagation();
-  // $('body').remove('.zoomContainer');
   var _href = $(this).attr('href');
   history.pushState(null, null, _href);
-  // waves2(_href);
-  fadeTransition(_href);
 }); // Custom Cursor
+$('body').on('click', 'a.logoTransition', function(event) {
+  var _href = $(this).attr('href');
+  fadeTransition(_href);
+});
+$('body').on('click', 'a.loadUnder', function(event) {
+  var _href = $(this).attr('href');
+  caseTransition(_href);
+});
+
+function caseTransition(href = window.location.href) {}
+
 function fadeTransition(href = window.location.href) {
+  var boxLoad = $.Deferred(),
+    faderLoad = $.Deferred();
+  $('.box').load(href + ' .ajaxContent', boxLoad.resolve);
+  $('.fader').css({
+    'top': '0',
+    'height': '0'
+  }).animate({
+    'height': '100vh',
+  }, 400, 'easeInQuint', faderLoad.resolve);
+  $.when(boxLoad, faderLoad).then(function() {
+    $('body').children('.ajaxContent').html($('.box').html());
+    $('.box').html('');
+    $('script').each(function() {
+      var oldScript = this.getAttribute("src");
+      console.log(oldScript);
+      if (oldScript == 'js/home.js') {
+        console.log(oldScript);
+        $(this).remove();
+        var newScript;
+        newScript = document.createElement('script');
+        newScript.type = 'text/javascript';
+        newScript.src = oldScript;
+        document.getElementsByTagName("head")[0].appendChild(newScript);
+      }
+    });
+    $('.ajaxContent').children('.ajaxContent').unwrap();
+    initSmoothScroll();
+    $('.fader').animate({
+      'height': '0',
+      'top': '100vh'
+    }, 400, 'easeInQuint', function() {});
+    // while ($('.fader').is(':animated')) {
+    //   if ($('.fader').height() % 2 == 0) {
+    //     console.log($('.fader').height());
+    //   }
+    //   else continue;
+    // }
+  });
+  $('.fader').on('resize', function() {
+    console.log('resized');
+  })
+}
+
+function fadeTransition2(href = window.location.href) {
   $('.fader').css({
     'position': 'fixed',
     //        'height': h,
@@ -24,16 +77,16 @@ function fadeTransition(href = window.location.href) {
   }).animate({
     'height': '100vh',
   }, 400, 'easeInQuint', function() {
-//     $('.fader').css({
-//       'transform':'rotate(180deg)'
-//     })
-//     $('.innerSVG').css({
-//
-// 'left': '50%',
-// '-webkit-transform': 'translateX(-50%)',
-// 'transform': 'translateX(-50%)',
-//       'transform':'rotate(-180deg)'
-//     })
+    //     $('.fader').css({
+    //       'transform':'rotate(180deg)'
+    //     })
+    //     $('.innerSVG').css({
+    //
+    // 'left': '50%',
+    // '-webkit-transform': 'translateX(-50%)',
+    // 'transform': 'translateX(-50%)',
+    //       'transform':'rotate(-180deg)'
+    //     })
     $('.ajaxContent').load(href + ' .ajaxContent', function() {
       //            EXECUTES ON CALLBACK
       $('.ajaxContent').children('.ajaxContent').unwrap();
