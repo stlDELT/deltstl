@@ -48,15 +48,8 @@ function fadeTransition(href = window.location.href) {
     $('.ajaxContent').children('.ajaxContent').unwrap();
     initSmoothScroll();
     $('.fader').animate({
-      // 'height': '0',
       'top': '100vh'
     }, 400, 'easeInQuint', function() {});
-    // while ($('.fader').is(':animated')) {
-    //   if ($('.fader').height() % 2 == 0) {
-    //     console.log($('.fader').height());
-    //   }
-    //   else continue;
-    // }
     $('.innerSVG').animate({
       'bottom': '100vh'
     }, 400, 'easeInQuint', function() {
@@ -64,9 +57,6 @@ function fadeTransition(href = window.location.href) {
       $('.innerSVG').attr('style', '');
     });
   });
-  $('.fader').on('resize', function() {
-    console.log('resized');
-  })
 }
 
 function fadeTransition2(href = window.location.href) {
