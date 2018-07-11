@@ -57,9 +57,12 @@ function fadeTransition(href = window.location.href) {
     //   }
     //   else continue;
     // }
-  $('.innerSVG').animate({
-    'bottom':'100vh'
-  }, 400, 'easeInQuint');
+    $('.innerSVG').animate({
+      'bottom': '100vh'
+    }, 400, 'easeInQuint', function() {
+      $('.fader').attr('style', '');
+      $('.innerSVG').attr('style', '');
+    });
   });
   $('.fader').on('resize', function() {
     console.log('resized');

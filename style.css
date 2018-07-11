@@ -7,6 +7,7 @@
 	position: fixed;
 	height: 0;
 	width: 100vw;
+
 	left: 0;
 	/* bottom:0; */
 	/* display:none; */
@@ -30,6 +31,7 @@
 	background-position:center;
 	background-repeat: none !important;
 	background-size:contain;
+	/* top:0; */
 	height:100vh;
 	position:absolute;
 left: 50%;
