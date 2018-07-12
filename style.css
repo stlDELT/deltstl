@@ -20,6 +20,18 @@
 	background-position:top;
 	z-index:1000; */
 }
+.slideshow .downarrow {
+	position:absolute;
+	color:white;
+	top:45%;
+	display:none;
+	right:5%;
+}
+.downarrow:hover {
+	transition:.4s ease-in-out;
+	top:86% !important;
+}
+
 .shrink {
 	transform: scale(0, 1);
 }

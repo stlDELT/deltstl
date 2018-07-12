@@ -1,5 +1,12 @@
 jQuery(document).ready(function($) {
+
   initSmoothScroll();
+  $('body').on('click', '.downarrow', function() {
+    // $('.loadHere')[0].scrollIntoView({behavior:'smooth'});
+    $('html, body').animate({
+      scrollTop: $(".loadHere").offset().top
+    }, 1000, 'easeInQuint');
+  });
   // initSlideShow();
 });
 $("body").on("click", "a.transition, a.loadUnder", function(event) {
@@ -23,28 +30,41 @@ function caseTransition(href = window.location.href) {
     loadContent = $.Deferred();
 
   console.log('ok');
-  $('.box').load(href + ' .ajaxContent', loadContent.resolve);
+  $('.box').load('/port.html .ajaxContent', loadContent.resolve);
   $currentSlide.siblings().remove();
   $('.slidenav, button.blk').animate({
     'opacity': '0'
   }, 400, function() {
     opaqueOne.resolve();
-    $(this).remove();
   });
   $('.loadHere').children().animate({
     'opacity': '0'
-  }, 400, function() {
-    $(this).remove();
-  });
+  }, 400, function() {});
   $.when(opaqueOne, loadContent).then(function() {
     console.log('hello');
+    $currentSlide.parents('.slideshow').animate({
+      'height': '80vh'
+    }, 400, "easeInQuint");
+    $('.slideshow .downarrow').css({
+      'display': 'block',
+      'opacity': '0'
+    }).animate({
+      'opacity': '1',
+      'top': '+=40%'
+    });
+    $('.slidenav, button.blk').remove();
+    $('.loadHere').css({
+      'opacity': '0'
+    }).animate({
+      'opacity': '1'
+    });
     $('.loadHere').html($('.box').html());
-    $('.box').children('.ajaxContent').unwrap();
+    // $('.box').children('.ajaxContent').unwrap();
   });
-// $('.slideshow').after('<div class="loadHere">')
-// $currentSlide.parents('.rel').after('<div class="loadHere">')
-// $('footer').before('</div>')
-// $('.loadHere').load(href + ' .ajaxContent');
+  // $('.slideshow').after('<div class="loadHere">')
+  // $currentSlide.parents('.rel').after('<div class="loadHere">')
+  // $('footer').before('</div>')
+  // $('.loadHere').load(href + ' .ajaxContent');
 
 }
 
@@ -361,17 +381,22 @@ $('.split').each(function(i, obj) {
     opacity: 0
   });
   splits[i] = once(function() {
+      $(".split" + i).css({
+        opacity: 1
+      });
     fadeInText(".split" + i);
   })
 });
+$('.split').each(function(i, obj) {
+  if ($(obj).offset().top < $(window).height()) {
+    splits[i]();
+  }
+})
 $(window).scroll(function() {
 
   for (var i = 0; i <= $(".split").length; i++) {
     //        if (i===0) { continue; }
     if ($(this).scrollTop() + $(window).height() > $(".split" + i).offset().top - $(".split" + i).height()) {
-      $(".split" + i).css({
-        opacity: 1
-      });
       splits[i]();
     }
   }
