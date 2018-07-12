@@ -2,11 +2,11 @@ jQuery(document).ready(function($) {
   initSmoothScroll();
   // initSlideShow();
 });
-$("body").on("click", "a.transition", function(event) {
+$("body").on("click", "a.transition, a.loadUnder", function(event) {
   event.preventDefault();
   event.stopPropagation();
   var _href = $(this).attr('href');
-  history.pushState(null, null, _href);
+  // history.pushState(null, null, _href);
 }); // Custom Cursor
 $('body').on('click', 'a.logoTransition', function(event) {
   var _href = $(this).attr('href');
@@ -17,7 +17,36 @@ $('body').on('click', 'a.loadUnder', function(event) {
   caseTransition(_href);
 });
 
-function caseTransition(href = window.location.href) {}
+function caseTransition(href = window.location.href) {
+  var $currentSlide = $('.slide--current'),
+    opaqueOne = $.Deferred(),
+    loadContent = $.Deferred();
+
+  console.log('ok');
+  $('.box').load(href + ' .ajaxContent', loadContent.resolve);
+  $currentSlide.siblings().remove();
+  $('.slidenav, button.blk').animate({
+    'opacity': '0'
+  }, 400, function() {
+    opaqueOne.resolve();
+    $(this).remove();
+  });
+  $('.loadHere').children().animate({
+    'opacity': '0'
+  }, 400, function() {
+    $(this).remove();
+  });
+  $.when(opaqueOne, loadContent).then(function() {
+    console.log('hello');
+    $('.loadHere').html($('.box').html());
+    $('.box').children('.ajaxContent').unwrap();
+  });
+// $('.slideshow').after('<div class="loadHere">')
+// $currentSlide.parents('.rel').after('<div class="loadHere">')
+// $('footer').before('</div>')
+// $('.loadHere').load(href + ' .ajaxContent');
+
+}
 
 function fadeTransition(href = window.location.href) {
   var boxLoad = $.Deferred(),
