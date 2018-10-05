@@ -1,0 +1,389 @@
+h1,
+h2,
+h3,
+h4,
+h6 {
+	margin-top: 0;
+	color: #000;
+	margin-bottom: 10px;
+	letter-spacing: 0px;
+	 font-family: "gineso-condensed";
+	font-weight: 700;
+	font-style: normal;
+}
+h1, .head1big {
+	font-size: 60px;
+	line-height: 68px;
+	 font-family: "gineso-condensed";
+	font-weight: 800;
+}
+
+.major {
+    text-transform: uppercase;
+     font-family: "gineso-condensed";
+    font-weight: 800;
+    font-size: 140px;
+    line-height: 140px;
+    font-style: italic !important
+}
+
+
+.container {
+	padding-right: 0;
+	padding-left: 0;
+	/* width: 1300px; */
+	position: relative;
+	width: 90%;
+}
+.inner {
+	padding-top: 80px;
+	padding-bottom: 180px;
+    position: relative;
+}
+.inside {
+    padding: 0px 10% 0px 0%
+}
+.sectionbar {
+    background: #f3f3f3;padding: 20px 20px;
+    position: relative;
+    margin-bottom: 70px
+}
+.sectionbar h4 {
+    margin-bottom: 0px;
+}
+.sb4{
+    position: absolute;
+    right: 20px;
+    top: 20px
+    
+}
+body {
+	font-size: 21px;
+	font-weight: 400;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	-webkit-text-size-adjust: 100%;
+	line-height: 39px;
+	background: #fff;
+	overflow-x: hidden !important;
+}
+body {
+	position: relative;
+	z-index: 1; 
+    font-family: "din-2014";
+}
+
+h2, .head2 {
+	font-size: 34px;
+	line-height: 40px;
+	 font-family: "gineso-condensed";
+	font-weight: 700;
+	font-style: normal;
+    text-transform: uppercase;
+    margin-bottom: 30px
+}
+h3, .head3, .childpage h2, .h3lowercase {
+	font-size:60px;
+	line-height: 68px;
+	margin-bottom: 60px;
+	 font-family: "gineso-condensed";
+	font-weight: 800;
+	font-style: italic;
+    text-transform: uppercase;
+}
+
+h4 {
+	font-size: 25px;
+	margin-bottom: 6px;
+	letter-spacing: 0px;
+	line-height: 30px;
+    text-transform: uppercase;
+}
+.inner h4 {
+    font-style: italic;
+    color: #bbb
+}
+
+h5 {
+	color: #b3b3b3;
+	font-size: 10px;
+}
+/*
+.wthp .major {
+    width: 70%
+}
+*/
+
+div p:last-child {
+	margin-bottom: 0px
+}
+
+input,
+button,
+select,
+textarea {
+	font-family: inherit;
+	font-size: 15px;
+	font-weight: normal;
+}
+p {
+	margin: 0 0 20px
+}
+
+.proposal{
+    position: relative;
+    padding-left: 20%
+}
+
+.themenu {
+    height:90vh;
+    position: fixed;
+    width: 15%;
+    left: 5vh;
+    z-index: 10;
+    background: #f1f1f1;
+    top: 5vh;
+    padding-top: 40px
+}
+
+.light-menu {
+    width: 100%;
+    height: 75px;
+    background-color: rgba(255, 255, 255, 1);
+    position: fixed;
+    background-color:rgba(4, 180, 49, 0.6);
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+#menu-center {
+    width: 980px;
+    height: 75px;
+    margin: 0 auto;
+}
+#menu-center ul {
+    margin: 15px 0 0 0;
+    position: relative;
+    z-index: 100;
+    
+}
+#menu-center ul li {
+    list-style: none;
+    margin: 0 30px 0 0;
+    font-size: 17px;
+    color: #fff;
+}
+#menu-center ul li a{
+    color: #000
+}
+.active {
+    color: #EF473F !important;
+    text-decoration: none;
+    line-height: 50px;
+}
+#menu-center h4 {
+    font-size: 20px
+}
+
+.titlepage {
+    position: relative;
+    height: 100vh;
+    background: #fff;
+    overflow: hidden;
+    max-height: 100vh;
+    transition: .7s ease;
+    opacity: 1;
+    z-index: 1000
+}
+
+.logo {
+    width: 200px;
+    position: absolute;
+    right: 150px;
+    z-index: 10000;
+    bottom: 90px
+}
+.titlebar {
+    height: 60vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+h1 {
+    left: 7%;
+    position: absolute;
+    font-size: 120px;
+    line-height: 110px;
+    font-style: italic;
+    bottom: 90px;
+    width: 40%
+}
+.project_info {
+    position: absolute;
+    top: 50%;
+    left:7%;
+    font-size: 20px;
+    line-height: 30px;
+    transform: translateY(-50%)
+}
+.delt_info {
+    position: absolute;
+    top: 50%;
+    right:7%;
+    font-size: 20px;
+    line-height: 30px;
+    transform: translateY(-50%)
+}
+.colorbar {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 40vh;
+    background: #000;
+    z-index: 10000;
+    color: #fff;
+}
+
+.bout{
+    position: relative;
+    background: #000;
+}
+.bout img {
+    width: 100%;
+    height: 600px;
+    object-fit: cover;
+    opacity: .4
+}
+.boutbox {
+    position: absolute;
+    width: 90%;
+    left: 5%;
+    background: #f3f3f3;
+    bottom: 5%;
+    font-size: 17px;
+    line-height: 26px;
+    padding: 20px
+}
+.smallp p{
+    font-size: 18px;
+    line-height: 28px;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+}
+.smallp li {
+    font-size: 17px
+}
+.summary {
+    font-size: 20px;
+    margin-bottom: 30px;
+    line-height: 30px;
+    color: #b1b1b1;
+    font-style: italic
+}
+.tl {
+    height: 70px;
+    background: #000;
+    padding-left: 20px;
+    position: relative;
+    margin-bottom: 30px;
+}
+.tl h4 {
+    font-size: 22px;
+    line-height: 70px;
+}
+
+.r1, .r2, .r3, .r4 {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 370px;
+    text-align: right;
+}
+.r1 h4, .r2 h4, .r3 h4, .r4 h4 {
+    position: relative;
+    z-index: 1;
+    color: #fff;
+    padding-right: 20px
+}
+.r1:after{
+    position: absolute;
+    height: 100%;
+    width: 50px;
+    background: #EF473F;
+    content: '';
+    right: 0;
+    top: 0;
+}
+.r2:after{
+    position: absolute;
+    height: 100%;
+    width: 60px;
+    background: #EF473F;
+    content: '';
+    right: 0;
+    top: 0;
+}
+
+.r3:after{
+    position: absolute;
+    height: 100%;
+    width: 100px;
+    background: #EF473F;
+    content: '';
+    right: 0;
+    top: 0;
+}
+
+.r4:after{
+    position: absolute;
+    height: 100%;
+    width: 120px;
+    background: #EF473F;
+    content: '';
+    right: 0;
+    top: 0;
+}
+h2 span {
+    color: #EF473F;
+    padding-left: 10px;
+    font-style: italic
+}
+.gline {
+    height: 1px;
+    background: #eee;
+    margin-bottom: 20px
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.colorbar h4{
+    color: #fff
+}
