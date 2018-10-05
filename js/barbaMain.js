@@ -25,15 +25,12 @@ var FadeTransition = Barba.BaseTransition.extend({
 
     return $(this.oldContainer).animate({
         opacity: 0
-      }, 500, function() {
+      }, 300, function() {
 
       }).promise(),
 
-      $('.fader').css({
-        'top': '0',
-        'height': '0'
-      }).animate({
-        'height': '100vh',
+      $('.fader').animate({
+        'bottom': '0vmin',
       }, 400, 'easeInQuint').promise();
     // $('.fader').animate({
     //   'opacity': '1'
@@ -53,7 +50,7 @@ var FadeTransition = Barba.BaseTransition.extend({
     $(this.oldContainer).hide();
 
     $('.fader').animate({
-      'top': '100vh'
+      'bottom': '100vmin'
     }, 400, 'easeInQuint', function() {});
     $('.innerSVG').animate({
       'bottom': '100vh'
@@ -139,7 +136,20 @@ Barba.Pjax.getTransition = function() {
 };
 
 function initializeStuff() {
-console.log('done');
+
+  var $gallery5 = $('#slider-5 .slides').flickity({
+    pageDots: false,
+    prevNextButtons: false,
+    wrapAround: true,
+    draggable: false
+  });
+
+
+  $('.btn-next').on('click', function() {
+    $gallery1.flickity('next');
+    $gallery5.flickity('next');
+  });
+  console.log('done');
 
   //FITTEXT
   (function($) {
