@@ -83,7 +83,9 @@ var FadeTransition = Barba.BaseTransition.extend({
 });
 var ExpandTransition = Barba.BaseTransition.extend({
   start: function() {
-    this.originalThumb = lastElementClicked;
+    // this.originalThumb = lastElementClicked;
+    // this.originalThumb = $('.swipeimg').children('.active');
+    this.originalThumb = document.querySelector('img.active');
 
     Promise
       .all([this.newContainerLoading, this.enlargeThumb()])
@@ -95,28 +97,36 @@ var ExpandTransition = Barba.BaseTransition.extend({
     var thumbPosition = this.originalThumb.getBoundingClientRect();
 
     this.cloneThumb = this.originalThumb.cloneNode(true);
-    this.cloneThumb.style.position = 'fixed';
-    this.cloneThumb.style.top = thumbPosition.top + 'px';
-    this.oldContainer.appendChild(this.cloneThumb);
+    // this.cloneThumb.style.position = 'fixed';
+    // this.cloneThumb.style.top = thumbPosition.top + 'px';
+    // this.oldContainer.appendChild(this.cloneThumb);
+    $('.swipeimg').animate({
+      'width' : '100%',
+      'right' :'0'
+    }, 400, function() {
+      deferred.resolve();
+    })
 
 
-    TweenLite.to(this.cloneThumb, 0.3, {
-      top: 0,
-      height: window.innerHeight,
-      onComplete: function() {
-        deferred.resolve();
-      }
-    });
+
+    // TweenLite.to(this.cloneThumb, 0.3, {
+    //   top: 0,
+    //   width: window.innerWidth,
+    //   onComplete: function() {
+    //     deferred.resolve();
+    //   }
+    // });
 
     return deferred.promise;
   },
 
   showNewPage: function() {
     this.newContainer.style.visibility = 'visible';
+    this.cloneThumb.style.position = 'relative';
+    this.cloneThumb.style.width = '1920px';
     this.newContainer.prepend(this.cloneThumb);
     $('html').scrollTop(0);
     console.log('done');
-    this.cloneThumb.style.position = 'relative';
     this.done();
     // this.cloneThumb.style.position = 'relative';
   }
@@ -132,7 +142,7 @@ Barba.Pjax.getTransition = function() {
    * For example you can use different Transition based on the current page or link...
    */
   // return ($(lastElementClicked).is('.intro-thumb')) ? ExpandTransition : FadeTransition;
-  return FadeTransition;
+  return ExpandTransition;
 };
 
 function initializeStuff() {
@@ -305,10 +315,18 @@ function initializeStuff() {
 
   $(document).ready(function() {
     $('.dropdown .lcta li').mouseenter(function() {
-      console.log($(this).data('anchor'));
       $('.swipeimg *').removeClass('active');
-      $('.swipeimg').children('[data-anchor='+$(this).data('anchor')+']').not('.active').addClass('active');
-      })
+      $('.swipeimg').children('[data-anchor=' + $(this).data('anchor') + ']').not('.active').addClass('active');
+    })
+    $('.dropdown .lcta li a').click(function(e) {
+      // e.preventDefault();
+      // e.stopPropagation();
+      // $('.swipeimg').animate({
+      //   'width':'100%',
+      //   'right':'0'
+      // })
+      // $('.swipeimg').children('[data-anchor=' + $(this).parent().data('anchor') + ']').not('.active').addClass('active');
+    })
     $(".mbox").click(function() {
       $(".menugo").toggleClass("giter");
       $(".dropdown").toggleClass("giter");
