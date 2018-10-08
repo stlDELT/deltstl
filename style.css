@@ -2192,6 +2192,19 @@ body {
     transition: .4s ease;
     transition-delay: 0s;
 }
+.dropdown img {
+	position: absolute;
+	transition: .4s ease;
+	top:0;
+}
+.dropdown img:not(.active) {
+	z-index:2;
+	width:.1px;
+}
+.active {
+	z-index:3;
+	right:0;
+}
 .giter.swipeimg:before{
     width: 0%;
     transition: .4s ease;

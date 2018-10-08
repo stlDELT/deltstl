@@ -304,6 +304,11 @@ function initializeStuff() {
     });
 
   $(document).ready(function() {
+    $('.dropdown .lcta li').mouseenter(function() {
+      console.log($(this).data('anchor'));
+      $('.swipeimg *').removeClass('active');
+      $('.swipeimg').children('[data-anchor='+$(this).data('anchor')+']').not('.active').addClass('active');
+      })
     $(".mbox").click(function() {
       $(".menugo").toggleClass("giter");
       $(".dropdown").toggleClass("giter");
