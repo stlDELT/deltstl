@@ -97,25 +97,35 @@ var ExpandTransition = Barba.BaseTransition.extend({
     var thumbPosition = this.originalThumb.getBoundingClientRect();
 
     this.cloneThumb = this.originalThumb.cloneNode(true);
-    // this.cloneThumb.style.position = 'fixed';
-    // this.cloneThumb.style.top = thumbPosition.top + 'px';
-    // this.oldContainer.appendChild(this.cloneThumb);
+    this.cloneThumb.style.position = 'fixed';
+    this.cloneThumb.style.top = thumbPosition.top + 'px';
+    this.cloneThumb.style.left = thumbPosition.left + 'px';
+    this.cloneThumb.style.width = this.originalThumb.width + 'px';
+    this.cloneThumb.style.height = this.originalThumb.height+ 'px';
+    this.cloneThumb.style.objectFit = "cover";
+    this.cloneThumb.style.zIndex = "20";
+    this.oldContainer.appendChild(this.cloneThumb);
     $('.swipeimg').animate({
       'width' : '100%',
       'right' :'0'
-    }, 400, function() {
-      deferred.resolve();
+    }, 2000, 'easeOutQuint', function() {
     })
+    // $('.dropdown').animate({
+    //   'opacity' : '0'
+    // }, 400, 'easeInQuint', function() {
+    //
+    // })
 
 
 
-    // TweenLite.to(this.cloneThumb, 0.3, {
-    //   top: 0,
-    //   width: window.innerWidth,
-    //   onComplete: function() {
-    //     deferred.resolve();
-    //   }
-    // });
+    TweenLite.to(this.cloneThumb, 2., {
+      top: 0,
+      left: 0,
+      width: window.innerWidth,
+      onComplete: function() {
+        deferred.resolve();
+      }
+    });
 
     return deferred.promise;
   },
